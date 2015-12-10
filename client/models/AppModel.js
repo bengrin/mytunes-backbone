@@ -21,7 +21,10 @@ var AppModel = Backbone.Model.extend({
       this.get('songQueue').add(song);
     }, this);
 
-    // on ('ended') we want to dequeue the first song on our queue. Dequeue means that we do this.set('currentSong',DequeuedSong).
+    this.get('songQueue').on('stop', function(){
+      this.set('currentSong', null);
+    }, this);
+
   }
 
 });
